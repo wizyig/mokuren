@@ -1,0 +1,4 @@
+run_id,record_id,node_id,node_type,parent_node,next_node,source_id,observed_date,A01,A02,A03,A04,A05,status,notes
+20260922-001,OBS001,observation,observed,,cr_candidate,SRC001,2026-09-22,Y,Y,N,Y,Y,observed,would trip COND-102/103/105 in v1.1
+20260922-001,OBS001,cr_candidate,candidate,observation,observation,SRC001,2026-09-22,Y,Y,N,Y,Y,candidate,cycle back to observation
+20260922-001,OBS001,orphan_node,input,,,SRC002,2026-09-22,0,0,0,0,0,active,isolated input no review sink

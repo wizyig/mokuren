@@ -1,0 +1,26 @@
+name: MGF v1.0
+on:
+  push:
+    branches: [main]
+  pull_request:
+jobs:
+  format-lock-v1-0:
+    name: "Format Lock v1.0 (Round-trip Preservation)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest pyyaml
+      - run: pytest tests/test_roundtrip.py -q
+  coverage-report:
+    name: "Validation Coverage v1.0"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install pytest pyyaml
+      - run: pytest tests/test_coverage.py tests/test_validator.py tests/test_invalid_calendar.py tests/test_invalid_check.py tests/test_invalid_date.py tests/test_duplicate_id.py tests/test_schema.py -q
