@@ -1,0 +1,6 @@
+check_id,name,description
+A01,evidence_present,観測証跡が存在 / evidence present
+A02,reproducible,再現可能 / reproducible
+A03,history_available,履歴取得可能 / history available
+A04,source_identified,情報源識別可能 / source identified
+A05,review_required,レビュー対象 / review required
