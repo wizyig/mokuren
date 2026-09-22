@@ -1,0 +1,65 @@
+mgf_version: '1.0'
+run:
+  run_id: 20260922-001
+  dataset_type: observed
+  sample_data: false
+checks:
+- id: A01
+  name: evidence_present
+- id: A02
+  name: reproducible
+- id: A03
+  name: history_available
+- id: A04
+  name: source_identified
+- id: A05
+  name: review_required
+nodes:
+- id: observation
+  type: observed
+- id: cr_candidate
+  type: candidate
+- id: orphan_node
+  type: input
+edges:
+- from: observation
+  to: cr_candidate
+- from: cr_candidate
+  to: observation
+records:
+- record_id: OBS001
+  node_id: observation
+  source_id: SRC001
+  observed_date: '2026-09-22'
+  checks:
+    A01: Y
+    A02: Y
+    A03: N
+    A04: Y
+    A05: Y
+  status: observed
+  notes: would trip COND-102/103/105 in v1.1
+- record_id: OBS001
+  node_id: cr_candidate
+  source_id: SRC001
+  observed_date: '2026-09-22'
+  checks:
+    A01: Y
+    A02: Y
+    A03: N
+    A04: Y
+    A05: Y
+  status: candidate
+  notes: cycle back to observation
+- record_id: OBS001
+  node_id: orphan_node
+  source_id: SRC002
+  observed_date: '2026-09-22'
+  checks:
+    A01: '0'
+    A02: '0'
+    A03: '0'
+    A04: '0'
+    A05: '0'
+  status: active
+  notes: isolated input no review sink
