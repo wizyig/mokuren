@@ -1,0 +1,11 @@
+digraph MOKUREN {
+  rankdir=TB;
+  node [shape=box, fontname=monospace];
+  "article" [label="article\ninput\n[Y Y Y Y 0]\nactive"];
+  "observation" [label="observation\nobserved\n[Y Y N Y Y]\nobserved"];
+  "cr_candidate" [label="cr_candidate\ncandidate\n[Y Y N Y Y]\ncandidate"];
+  "periodic_review" [label="periodic_review\nreview\n[0 0 0 0 0]\npending"];
+  "article" -> "observation";
+  "observation" -> "cr_candidate";
+  "cr_candidate" -> "periodic_review";
+}

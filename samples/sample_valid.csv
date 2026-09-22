@@ -1,0 +1,5 @@
+run_id,record_id,node_id,node_type,parent_node,next_node,source_id,observed_date,A01,A02,A03,A04,A05,status,notes
+20260922-001,OBS001,article,input,,observation,SRC001,2026-09-22,Y,Y,Y,Y,0,active,raw article
+20260922-001,OBS001,observation,observed,article,cr_candidate,SRC001,2026-09-22,Y,Y,N,Y,Y,observed,history absent
+20260922-001,OBS001,cr_candidate,candidate,observation,periodic_review,SRC001,2026-09-22,Y,Y,N,Y,Y,candidate,review candidate
+20260922-001,OBS001,periodic_review,review,cr_candidate,,SRC001,2026-09-22,0,0,0,0,0,pending,waiting review

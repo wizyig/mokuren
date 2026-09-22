@@ -1,0 +1,2 @@
+run_id,record_id,node_id,node_type,parent_node,next_node,source_id,observed_date,A01,A02,A03,A04,A05,status,notes
+20260922-001,OBS001,observation,observed,article,periodic_review,SRC001,22-09-2026,Y,Y,N,Y,Y,observed,bad date
