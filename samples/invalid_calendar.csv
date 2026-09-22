@@ -1,0 +1,3 @@
+run_id,record_id,node_id,node_type,parent_node,next_node,source_id,observed_date,A01,A02,A03,A04,A05,status,notes
+20260922-001,OBS001,observation,observed,article,periodic_review,SRC001,2026-02-31,Y,Y,N,Y,Y,observed,nonexistent calendar day
+20260922-002,OBS002,observation,observed,article,periodic_review,SRC001,2026-13-01,Y,Y,N,Y,Y,observed,nonexistent month
