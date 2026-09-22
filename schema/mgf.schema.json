@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MGF v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["mgf_version", "run", "checks", "nodes", "edges", "records"],
+  "properties": {
+    "mgf_version": { "const": "1.0" },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["run_id", "dataset_type", "sample_data"],
+      "properties": {
+        "run_id": { "type": "string", "pattern": "^\\d{8}-\\d{3}$" },
+        "dataset_type": { "enum": ["observed", "sample", "synthetic"] },
+        "sample_data": { "type": "boolean" }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name"],
+        "properties": {
+          "id": { "type": "string", "pattern": "^A0[1-5]$" },
+          "name": { "type": "string" }
+        }
+      }
+    },
+    "nodes": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/node" } },
+    "edges": { "type": "array", "items": { "$ref": "#/$defs/edge" } },
+    "records": { "type": "array", "items": { "$ref": "#/$defs/record" } }
+  },
+  "$defs": {
+    "checkValue": { "enum": ["Y", "N", "0"] },
+    "node": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9_\\-]+$" },
+        "type": { "enum": ["input", "observed", "candidate", "review"] }
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to"],
+      "properties": { "from": { "type": "string" }, "to": { "type": "string" } }
+    },
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["record_id", "node_id", "checks"],
+      "properties": {
+        "record_id": { "type": "string" },
+        "node_id": { "type": "string" },
+        "source_id": { "type": "string" },
+        "observed_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+        "checks": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["A01", "A02", "A03", "A04", "A05"],
+          "properties": {
+            "A01": { "$ref": "#/$defs/checkValue" },
+            "A02": { "$ref": "#/$defs/checkValue" },
+            "A03": { "$ref": "#/$defs/checkValue" },
+            "A04": { "$ref": "#/$defs/checkValue" },
+            "A05": { "$ref": "#/$defs/checkValue" }
+          }
+        },
+        "status": { "enum": ["active", "observed", "candidate", "pending", "closed"] },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}
