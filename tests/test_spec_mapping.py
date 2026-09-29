@@ -4,7 +4,7 @@ from tests.spec_registry import EXCLUDED_CONDITIONS, SPEC_FIXTURES, SPEC_IDS
 
 def test_validation_scope_contains_all_ids():
     doc = Path("docs/validation_scope.md").read_text(encoding="utf-8")
-    found = set(re.findall(r"(CORE-\\d+|COND-\\d+)", doc))
+    found = set(re.findall(r"(CORE-\d+|COND-\d+)", doc))
     assert SPEC_IDS <= found
 
 def test_exclusion_ids_match_spec():

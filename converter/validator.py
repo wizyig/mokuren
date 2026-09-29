@@ -8,8 +8,8 @@ ALLOWED_CHECK = {"Y", "N", "0"}
 NODE_TYPES = {"input", "observed", "candidate", "review"}
 STATUS_VALUES = {"active", "observed", "candidate", "pending", "closed"}
 DATASET_TYPES = {"observed", "sample", "synthetic"}
-RUN_ID = re.compile(r"^\\d{8}-\\d{3}$")
-NODE_ID = re.compile(r"^[a-z0-9_\\-]+$")
+RUN_ID = re.compile(r"^\d{8}-\d{3}$")
+NODE_ID = re.compile(r"^[a-z0-9_\-]+$")
 CSV_REQUIRED = ("run_id", "record_id", "node_id", "node_type", "observed_date", "A01", "A02", "A03", "A04", "A05", "status")
 DEFAULT_CHECKS = [
     {"id": "A01", "name": "evidence_present"},
